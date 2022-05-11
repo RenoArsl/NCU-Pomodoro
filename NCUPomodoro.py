@@ -1,6 +1,9 @@
 import streamlit as st
 import time
 
+with open("style.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html= True)
+
 class Layout(object):
     def __init__(self):
         self.inputSection = st.container()

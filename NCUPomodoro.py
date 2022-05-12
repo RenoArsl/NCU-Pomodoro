@@ -1,8 +1,11 @@
 import streamlit as st
 import time
 
+
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html= True)
+
+
 
 class Layout(object):
     def __init__(self):
@@ -12,7 +15,7 @@ class Layout(object):
         self.outputSection = st.container()
         self.colImg, self.colText = self.outputSection.columns(2)
         self.thumbnail = st.image("19.jpg", width = 100)
-        
+
 class Timer(object):
     def start(self, Layout, ts):
         if "time" not in st.session_state or not st.session_state.time == None:
@@ -59,6 +62,6 @@ def main():
                 watch.start(layout, timer_length)
             elif resume and "time" in st.session_state:
                 watch.start(layout, st.session_state.time)
-            
+
 if __name__ == "__main__":
     main()

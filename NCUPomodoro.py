@@ -18,13 +18,13 @@ class Layout(object):
 
 class Timer(object):
     def start(self, Layout, ts):
-        if "time" not in st.session_state or not st.session_state.time == None:
+        if "time" not in st.session_state or not st.session_state.time == None: #session_state的初始化
             st.session_state.time = ts
             
-        with st.empty():
+        with st.empty(): #創建每次呼叫就會清空再執行的容器
             while st.session_state.time:
-                current_time = "%02d：%02d"%(divmod(st.session_state.time, 60))
-                st.header(f"{current_time}")
+                current_time = "%02d：%02d"%(divmod(st.session_state.time, 60))#將計時資料儲存再變數
+                st.header(f"{current_time}")#印出
                 time.sleep(1)
                 st.session_state.time -= 1
             st.write("Time Up!")
